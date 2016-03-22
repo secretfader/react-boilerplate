@@ -50,7 +50,7 @@
     "copy:assets": "cpy \"**/*.*\" \"../../dist/public/\" --parents --cwd=src/public",
     "create": "npm run build:client && npm run build:babel && npm run copy:assets && npm run build:css",
     "predev": "npm run setup && npm run create",
-    "dev": "concurrently \"npm run watch:lint\" \"npm run watch:client\" \"npm run watch:babel\" \"npm run watch:css\" \"npm run watch:app\" \"npm start\"",
+    "dev": "concurrently --raw \"npm run watch:lint\" \"npm run watch:client\" \"npm run watch:babel\" \"npm run watch:css\" \"npm run watch:app\" \"npm start\"",
     "precompile": "npm run lint && npm run setup",
     "compile": "concurrently \"npm run build:client\" \"npm run build:babel\" \"npm run build:css\" \"npm run copy:assets\""
   },
