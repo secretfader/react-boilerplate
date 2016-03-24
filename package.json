@@ -28,6 +28,7 @@
     "mkdirp": "^0.5.1",
     "onchange": "^2.1.2",
     "postcss-cli": "^2.5.1",
+    "revv-cli": "^1.0.0",
     "trash-cli": "^1.2.1",
     "watchify": "^3.7.0",
     "xo": "^0.13.0"
@@ -52,7 +53,8 @@
     "predev": "npm run setup && npm run create",
     "dev": "concurrently --raw \"npm run watch:lint\" \"npm run watch:client\" \"npm run watch:babel\" \"npm run watch:css\" \"npm run watch:app\" \"npm start\"",
     "precompile": "npm run lint && npm run setup",
-    "compile": "concurrently \"npm run build:client\" \"npm run build:babel\" \"npm run build:css\" \"npm run copy:assets\""
+    "compile": "concurrently \"npm run build:client\" \"npm run build:babel\" \"npm run build:css\" \"npm run copy:assets\"",
+		"postcompile": "revv \"dist/public/*\" \"!dist/public/*.ico\" --tidy"
   },
   "repository": {
     "type": "git",
@@ -73,7 +75,10 @@
     "extends": "xo-react",
     "rules": {
       "babel/object-curly-spacing": 0,
-      "jsx-quotes": [2, "prefer-double"],
+      "jsx-quotes": [
+        2,
+        "prefer-double"
+      ],
       "new-cap": 0
     }
   },
