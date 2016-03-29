@@ -5,6 +5,7 @@
   "main": "dist/server.js",
   "dependencies": {
     "express": "^4.13.4",
+    "keykey": "^2.1.1",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-helmet": "^2.3.1",
@@ -73,7 +74,10 @@
     "extends": "xo-react",
     "rules": {
       "babel/object-curly-spacing": 0,
-      "jsx-quotes": [2, "prefer-double"],
+      "jsx-quotes": [
+        2,
+        "prefer-double"
+      ],
       "new-cap": 0
     }
   },
