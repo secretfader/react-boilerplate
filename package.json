@@ -45,7 +45,7 @@
     "build:css": "postcss -c .css.json",
     "watch:babel": "babel src/ --out-dir dist/ --quiet --watch",
     "build:babel": "babel src/ --out-dir dist/ --quiet",
-    "watch:client": "watchify src/client.js -o dist/public/app.js",
+		"watch:client": "watchify src/client.js -o 'exorcist dist/public/app.js.map > dist/public/app.js' -dv",
     "build:client": "browserify src/client.js -o dist/public/app.js",
     "watch:app": "browser-sync start --proxy localhost:4000 --files \"dist/public/*.js, dist/public/*.css\"",
     "copy:assets": "cpy \"**/*.*\" \"../../dist/public/\" --parents --cwd=src/public",
