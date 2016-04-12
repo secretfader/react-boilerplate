@@ -11,7 +11,8 @@
     "react-helmet": "^2.3.1",
     "react-redux": "^4.4.1",
     "react-router": "^2.0.0",
-    "redux": "^3.3.1"
+    "redux": "^3.3.1",
+    "reselect": "^2.3.0"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.3",
@@ -45,7 +46,7 @@
     "build:css": "postcss -c .css.json",
     "watch:babel": "babel src/ --out-dir dist/ --quiet --watch",
     "build:babel": "babel src/ --out-dir dist/ --quiet",
-		"watch:client": "watchify src/client.js -o 'exorcist dist/public/app.js.map > dist/public/app.js' -dv",
+    "watch:client": "watchify src/client.js -o 'exorcist dist/public/app.js.map > dist/public/app.js' -dv",
     "build:client": "browserify src/client.js -o dist/public/app.js",
     "watch:app": "browser-sync start --proxy localhost:4000 --files \"dist/public/*.js, dist/public/*.css\"",
     "copy:assets": "cpy \"**/*.*\" \"../../dist/public/\" --parents --cwd=src/public",
