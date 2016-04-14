@@ -1,4 +1,4 @@
-import { Router5 } from 'router5';
+import Router5 from 'router5';
 import historyPlugin from 'router5-history';
 import routes from './routes';
 
