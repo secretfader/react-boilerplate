@@ -10,9 +10,13 @@
     "react-dom": "^0.14.7",
     "react-helmet": "^2.3.1",
     "react-redux": "^4.4.1",
-    "react-router": "^2.0.0",
+    "react-router5": "^3.1.0",
     "redux": "^3.3.1",
-    "reselect": "^2.3.0"
+    "redux-router5": "^3.0.0",
+    "reselect": "^2.3.0",
+    "router5": "^3.0.2",
+    "router5-history": "^3.0.3",
+    "router5.helpers": "^1.1.0"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.3",

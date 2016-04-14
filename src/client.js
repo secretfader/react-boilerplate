@@ -1,15 +1,19 @@
 /* global document */
-import React from 'react';
-import { Provider } from 'react-redux';
 import { render } from 'react-dom';
+import configureRouter from './router';
 import configureStore from './store';
-import App from './components/app';
+import configureContext from './context';
 
-const store = configureStore();
-const context = (
-	<Provider store={store}>
-		<App/>
-	</Provider>
-);
+const router = configureRouter();
 
-render(context, document.getElementById('app'));
+router.start((err, route) => {
+	if (err) {
+		throw err;
+	}
+
+	const options = { router: { route: route } };
+	const store = configureStore(options, router);
+	const context = configureContext(store, router);
+
+	render(context, document.getElementById('app'));
+});
