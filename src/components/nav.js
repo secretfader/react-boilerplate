@@ -24,8 +24,15 @@ class Nav extends Component {
 				<li>
 					<Link router={this.router}
 								navigateTo={navigateTo}
-								name="notes">
-						Notes
+								name="local">
+						Notes: Local 
+					</Link>
+				</li>
+				<li>
+					<Link router={this.router}
+								navigateTo={navigateTo}
+								name="all">
+						Notes: All
 					</Link>
 				</li>
 			</nav>
