@@ -6,13 +6,15 @@ import configureContext from './context';
 
 const router = configureRouter();
 
-router.start((err, route) => {
+router.start((err, state) => {
 	if (err) {
 		throw err;
 	}
 
-	const options = { router: { route: route } };
-	const store = configureStore(options, router);
+	const store = configureStore(router, {
+		router: { route: state }
+	});
+
 	const context = configureContext(store, router);
 
 	render(context, document.getElementById('app'));

@@ -1,8 +1,10 @@
 import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
 import { startsWithSegment } from 'router5.helpers';
-import { routeNode } from 'react-router5';
+import { routeNodeSelector } from 'redux-router5';
+import Nav from './nav';
 import Home from './home';
-import About from './about';
+import NotesList from './notes-list';
 import NotFound from './not-found';
 
 function App({ route }) {
@@ -13,11 +15,21 @@ function App({ route }) {
 	const matches = startsWithSegment(route.name);
 
 	if (matches('home')) {
-		return <Home/>;
+		return (
+			<div>
+				<Nav/>
+				<Home/>
+			</div>
+		);
 	}
 
-	if (matches('about')) {
-		return <About/>;
+	if (matches('notes')) {
+		return (
+			<div>
+				<Nav/>
+				<NotesList/>
+			</div>
+		);
 	}
 }
 
@@ -25,4 +37,4 @@ App.propTypes = {
 	route: PropTypes.object.isRequired
 };
 
-export default routeNode('')(App);
+export default connect(routeNodeSelector(''))(App);

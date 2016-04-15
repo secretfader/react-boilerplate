@@ -84,6 +84,8 @@
         2,
         "prefer-double"
       ],
+			"react/jsx-indent-props": 0,
+			"react/jsx-closing-bracket-location": 0,
       "new-cap": 0
     }
   },

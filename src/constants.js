@@ -1,3 +1,5 @@
 import keykey from 'keykey';
 
-export default keykey();
+export default keykey([
+	'GET_NOTES'
+]);
