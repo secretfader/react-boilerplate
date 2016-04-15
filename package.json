@@ -53,7 +53,7 @@
     "build:babel": "babel src/ --out-dir dist/ --quiet",
     "watch:client": "watchify src/client.js -o 'exorcist dist/public/app.js.map > dist/public/app.js' -dv",
     "build:client": "browserify src/client.js -o dist/public/app.js",
-    "watch:app": "browser-sync start --proxy localhost:4000 --files \"dist/public/*.js, dist/public/*.css\"",
+    "watch:app": "browser-sync start --no-open --proxy localhost:4000 --files \"dist/public/*.js, dist/public/*.css\"",
     "copy:assets": "cpy \"**/*.*\" \"../../dist/public/\" --parents --cwd=src/public",
     "create": "npm run build:client && npm run build:babel && npm run copy:assets && npm run build:css",
     "predev": "npm run setup && npm run create",
