@@ -29,7 +29,7 @@ export default function fetchMiddleware(settings = {}) {
 		parseJSON()
 	);
 
-	return () => next => action => {
+	return ({ getState }) => next => action => {
 		const caller = action[CALL_HTTP];
 		
 		if (typeof caller === 'undefined') {
@@ -37,11 +37,18 @@ export default function fetchMiddleware(settings = {}) {
 		}
 
 		let options = {
-			method: 'get'
+			method: 'get',
+			cache: false
 		};
 
 		if (caller.options) {
 			options = { options, ...caller.options };
+		}
+
+		if (options.cache && typeof options.cache === 'function') {
+			if (options.cache(getState())) {
+				return;
+			}
 		}
 
 		const {
