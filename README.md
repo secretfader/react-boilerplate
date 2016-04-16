@@ -25,6 +25,7 @@ Build the application before running in a production deploy.
 
 * [Express](http://expressjs.com)
 * [React](https://facebook.github.io/react)
+* [Router5](http://router5.github.io)
 * [Redux](http://redux.js.org)
 * [XO](https://github.com/sindresorhus/xo)
 * [AVA](https://github.com/sindresorhus/ava)
