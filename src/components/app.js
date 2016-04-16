@@ -23,7 +23,7 @@ function App({ route }) {
 		);
 	}
 
-	if (matches('notes')) {
+	if (matches('local') || matches('all')) {
 		return (
 			<div>
 				<Nav/>

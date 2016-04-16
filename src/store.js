@@ -1,6 +1,7 @@
 /* global window */
 import { compose, createStore, applyMiddleware } from 'redux';
 import { router5Middleware } from 'redux-router5';
+import fetchMiddleware from './middleware/fetch';
 import onActivateMiddleware from './middleware/onactivate';
 import routes from './routes';
 import reducers from './reducers';
@@ -8,6 +9,7 @@ import reducers from './reducers';
 export default function configureStore(router, state = {}) {
 	const stack = compose(
 		applyMiddleware(
+			fetchMiddleware(),
 			router5Middleware(router),
 			onActivateMiddleware(routes)
 		)
