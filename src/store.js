@@ -1,4 +1,3 @@
-/* global window */
 import { compose, createStore, applyMiddleware } from 'redux';
 import { router5Middleware } from 'redux-router5';
 import fetchMiddleware from './middleware/fetch';
@@ -15,6 +14,6 @@ export default function configureStore(router, state = {}) {
 		)
 	)(createStore);
 
-	const store = window.store = stack(reducers, state);
+	const store = stack(reducers, state);
 	return store;
 }

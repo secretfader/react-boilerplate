@@ -13,22 +13,23 @@ import {
 
 export const CALL_HTTP = Symbol('CALL_HTTP');
 
-export default function fetchMiddleware(host, settings = {}) {
-	host = host || '//';
+export default function fetchMiddleware(settings = {}) {
 	settings = {
 		accept: 'application/vnd.api+json',
 		type: 'application/vnd.api+json',
+		host: '/',
+		field: 'jsonData',
 		...settings
 	};
 
 	const stack = createStack(
-		base(host),
+		base(settings.host),
 		accept(settings.accept),
 		header('Content-Type', settings.type),
 		parseJSON()
 	);
 
-	return ({ dispatch }) => next => action => {
+	return () => next => action => {
 		const caller = action[CALL_HTTP];
 		
 		if (typeof caller === 'undefined') {
@@ -48,10 +49,7 @@ export default function fetchMiddleware(host, settings = {}) {
 			types: [requestType, successType, errorType]
 		} = caller;
 
-		let client = createStack(
-			stack,
-			method(options.method || 'get')
-		);
+		let client = createStack(stack, method(options.method));
 
 		if (options.body) {
 			client = createStack( 
@@ -67,7 +65,7 @@ export default function fetchMiddleware(host, settings = {}) {
 		return request(endpoint).then(payload => {
 			next({
 				type: successType,
-				payload: payload
+				payload: payload[settings.field]
 			});
 		}).catch(error => {
 			next({
