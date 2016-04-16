@@ -31,7 +31,7 @@ export default function fetchMiddleware(settings = {}) {
 
 	return ({ getState }) => next => action => {
 		const caller = action[CALL_HTTP];
-		
+
 		if (typeof caller === 'undefined') {
 			return next(action);
 		}
@@ -59,7 +59,7 @@ export default function fetchMiddleware(settings = {}) {
 		let client = createStack(stack, method(options.method));
 
 		if (options.body) {
-			client = createStack( 
+			client = createStack(
 				client,
 				body(JSON.stringify(options.body))
 			);

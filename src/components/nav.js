@@ -25,7 +25,7 @@ class Nav extends Component {
 					<Link router={this.router}
 								navigateTo={navigateTo}
 								name="local">
-						Notes: Local 
+						Notes: Local
 					</Link>
 				</li>
 				<li>
