@@ -4,6 +4,9 @@ import fetchMiddleware from './middleware/fetch';
 import onActivateMiddleware from './middleware/onactivate';
 import routes from './routes';
 import reducers from './reducers';
+import config from '../config';
+
+console.log(config.get('api.host'));
 
 export default function configureStore(router, state = {}) {
 	const stack = compose(
