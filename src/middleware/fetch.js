@@ -1,5 +1,6 @@
 /* eslint no-unused-vars: 0 */
 import 'isomorphic-fetch';
+import errbot from 'errbot';
 import {
 	createStack,
 	createFetch,
@@ -8,10 +9,21 @@ import {
 	accept,
 	header,
 	body,
+	handleResponse,
 	parseJSON
 } from 'http-client';
 
 export const CALL_HTTP = Symbol('CALL_HTTP');
+
+export function checkStatus(response) {
+	const { ok, status, statusText } = response;
+
+	if (ok) {
+		return response;
+	}
+
+	throw errbot.create(status, statusText);
+}
 
 export default function fetchMiddleware(settings = {}) {
 	settings = {
@@ -56,7 +68,11 @@ export default function fetchMiddleware(settings = {}) {
 			types: [requestType, successType, errorType]
 		} = caller;
 
-		let client = createStack(stack, method(options.method));
+		let client = createStack(
+			stack,
+			method(options.method),
+			handleResponse(checkStatus)
+		);
 
 		if (options.body) {
 			client = createStack(

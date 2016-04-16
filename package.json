@@ -4,6 +4,7 @@
   "description": "An opinionated React Boilerplate project.",
   "main": "dist/server.js",
   "dependencies": {
+    "errbot": "^1.0.0",
     "express": "^4.13.4",
     "http-client": "^3.1.0",
     "isomorphic-fetch": "^2.2.1",
