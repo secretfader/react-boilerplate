@@ -4,6 +4,7 @@ import errbot from 'errbot';
 import {
 	createStack,
 	createFetch,
+	init,
 	base,
 	method,
 	accept,
@@ -31,15 +32,24 @@ export default function fetchMiddleware(settings = {}) {
 		type: 'application/vnd.api+json',
 		host: '/',
 		field: 'jsonData',
+		options: {
+			credentials: 'include'
+		},
 		...settings
 	};
 
-	const stack = createStack(
+	let stack = createStack(
 		base(settings.host),
 		accept(settings.accept),
 		header('Content-Type', settings.type),
 		parseJSON()
 	);
+
+	if (Object.keys(settings.options).length) {
+		for (const key in settings.options) {
+			stack = createStack(stack, init(key, settings.options[key]));
+		}
+	}
 
 	return ({ getState }) => next => action => {
 		const caller = action[CALL_HTTP];
