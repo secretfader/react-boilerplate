@@ -28,8 +28,8 @@ export function checkStatus(response) {
 
 export default function fetchMiddleware(settings = {}) {
 	settings = {
-		accept: 'application/vnd.api+json',
-		type: 'application/vnd.api+json',
+		accept: 'application/json',
+		type: 'application/json',
 		host: '/',
 		field: 'jsonData',
 		options: {
