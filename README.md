@@ -1,5 +1,7 @@
 # React Boilerplate
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/nicholaswyoung/react-boilerplate.svg)](https://greenkeeper.io/)
+
 This is an opinionated React boilerplate, designed as a starting place for web
 applications that we build at [Until Now](http://untilnow.co).
 
